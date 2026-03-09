@@ -24,12 +24,9 @@ PG_DB_NAME="drop" PG_DB_USER="drop" setup_postgresql_db
 NODE_VERSION="22" setup_nodejs
 setup_rust
 
-fetch_and_deploy_gh_release "drop" "Drop-OSS/drop" "tarball"
-
-msg_info "Initializing Submodules"
-cd /opt/drop
-$STD git submodule update --init --recursive
-msg_ok "Initialized Submodules"
+msg_info "Cloning Drop Repository"
+$STD git clone --recursive --depth 1 https://github.com/Drop-OSS/drop.git /opt/drop
+msg_ok "Cloned Drop Repository"
 
 msg_info "Installing pnpm and Dependencies"
 $STD corepack enable

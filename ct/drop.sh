@@ -41,12 +41,10 @@ function update_script() {
     cp -r /opt/drop/prisma /opt/drop_prisma_backup
     msg_ok "Backed up Data"
 
-    CLEAN_INSTALL=1 fetch_and_deploy_gh_release "drop" "Drop-OSS/drop" "tarball"
-
-    msg_info "Initializing Submodules"
-    cd /opt/drop
-    $STD git submodule update --init --recursive
-    msg_ok "Initialized Submodules"
+    msg_info "Cloning Drop Repository"
+    rm -rf /opt/drop
+    $STD git clone --recursive --depth 1 https://github.com/Drop-OSS/drop.git /opt/drop
+    msg_ok "Cloned Drop Repository"
 
     msg_info "Installing Dependencies"
     $STD corepack enable
