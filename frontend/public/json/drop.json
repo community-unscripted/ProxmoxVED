@@ -1,0 +1,50 @@
+{
+    "name": "Drop",
+    "slug": "drop",
+    "categories": [24],
+    "date_created": "2026-03-09",
+    "type": "ct",
+    "updateable": true,
+    "privileged": false,
+    "interface_port": 3000,
+    "documentation": "https://docs.droposs.org",
+    "website": "https://droposs.org",
+    "logo": "https://cdn.jsdelivr.net/gh/selfhst/icons@main/webp/drop.webp",
+    "config_path": "/opt/drop/.env",
+    "description": "Drop is an open-source game distribution platform designed to provide a Steam-like experience for DRM-free games with library management and download capabilities.",
+    "install_methods": [
+        {
+            "type": "default",
+            "script": "ct/drop.sh",
+            "resources": {
+                "cpu": 4,
+                "ram": 8192,
+                "hdd": 20,
+                "os": "Debian",
+                "version": "13"
+            }
+        }
+    ],
+    "default_credentials": {
+        "username": null,
+        "password": null
+    },
+    "notes": [
+        {
+            "text": "First startup may take several minutes to complete database migrations and initialization.",
+            "type": "info"
+        },
+        {
+            "text": "Games are stored in /opt/drop/data/library by default.",
+            "type": "info"
+        },
+        {
+            "text": "Requires sufficient disk space for game library storage.",
+            "type": "warning"
+        },
+        {
+            "text": "Build process includes Rust compilation which may take 10-15 minutes.",
+            "type": "info"
+        }
+    ]
+}
